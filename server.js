@@ -3,9 +3,12 @@ const express = require('express');
 const {PORT} = require('./config');
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
+const {indeedRouter} = require('./routers/routerExports');
 const app = express();
 app.use(jsonParser);
 //app.set('trust proxy', true);
+
+app.use('/api/indeed',indeedRouter);
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');

@@ -8,8 +8,6 @@ const app = express();
 app.use(jsonParser);
 //app.set('trust proxy', true);
 
-app.use('/api/indeed',indeedRouter);
-
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,Accept');
@@ -19,6 +17,8 @@ app.use(function (req, res, next) {
   }
   next();
 });
+
+app.use('/api/indeed',indeedRouter);
 
 function runServer(port = PORT) {
     return new Promise((resolve, reject) => {

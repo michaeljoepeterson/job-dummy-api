@@ -5,6 +5,12 @@ const {indeedData,indeedData2} = require('./data');
 router.get('/',(req,res) => {
 		let page = req.query.page;
 		let data = indeedData;
+		if(page > 2){
+			return res.json({
+        code:200,
+        data:[]
+    }); 
+		}
 		if(page == 2){
 			data = indeedData2
 		}
